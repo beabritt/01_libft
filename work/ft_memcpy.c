@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: becamino <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/09 14:33:11 by becamino          #+#    #+#             */
+/*   Updated: 2023/02/09 14:33:14 by becamino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include<unistd.h>
 
 /*copia n bytes del area de mem src al area dst. 
@@ -5,14 +17,14 @@ Si dst y src se superponen, behaviour is undefined.*/
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int			cont;
+	size_t		cont;
 	char		*d;
 	const char	*s;
 
 	d = (char *)dst;
 	s = (char *)src;
 	cont = 0;
-	while (cont < n)
+	while (cont < n && (d != (void *)0 || s != (void *)0))
 	{
 		d[cont] = s[cont];
 		cont ++;

@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<unistd.h>
 #include "libft.h"
 
 /*Escribe len (x) de valor c (convertidos a un unsigned char) a la cadena b*/

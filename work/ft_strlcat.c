@@ -15,22 +15,20 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int	y;
-	int	l_src;
-	int	l_dst;
+	size_t	x;
+	size_t	l_src;
+	size_t	l_dst;
 
 	l_src = ft_strlen(src);
-	printf("*********%d\n", l_src);
 	l_dst = ft_strlen(dst);
-	printf("**********%d\n", l_dst);
-	y = 0;
+	x = 0;
 	if (l_dst > dstsize)
 		return (l_src + dstsize);
-	while (y < dstsize - l_dst - 1)
+	while (x < dstsize - l_dst - 1)
 	{
-	dst[l_dst + y] = src [y];
+	dst[l_dst + x] = src [x];
 	y++;
 	}
-	dst[l_dst + y + 1] = '\0';
+	dst[l_dst + x + 1] = '\0';
 	return (l_src + l_dst);
 }
