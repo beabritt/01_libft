@@ -1,6 +1,7 @@
 #include<stdio.h>
 /*	if (haystack == (void *)0 || needle == (void *)0)
-		return (NULL);*/
+		return (NULL);
+	busca str2 en str1 en un n numero de bytes*/
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
