@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: becamino <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/13 16:33:15 by becamino          #+#    #+#             */
+/*   Updated: 2023/02/13 16:33:18 by becamino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include<stdio.h>
+#include "libft.h"
 
 /*espacios blancos, signos y numeros*/
 int	ft_atoi(const char *str)
@@ -9,8 +22,6 @@ int	ft_atoi(const char *str)
 
 	num = 0;
 	sign = 1;
-	if (str == (void *)0)
-		return (0);
 	x = 0;
 	while ((str[x] == 32 || (str[x] >= 9 && str[x] <= 13)))
 	{
@@ -28,10 +39,11 @@ int	ft_atoi(const char *str)
 	return (num * sign);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char 	str [10] = "+123a";
 
 	printf("%d \n", ft_atoi(str));
+	printf("%d \n", ft_atoi((void *)0));
 	return (0);
-}
+}*/

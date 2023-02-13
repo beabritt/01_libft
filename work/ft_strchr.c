@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include<stdio.h>
+#include "libft.h"
 
 /*size_t	ft_strlen(const char *s);*/
 
@@ -20,20 +21,15 @@ char	*ft_strchr(const char *s, int c)
 	int	slen;
 
 	slen = ft_strlen(s);
-	if (slen == 0)
-		return (NULL);
-	else
+	x = 0;
+	while (x <= slen && (x >= 0 && x <= 255))
 	{
-		x = 0;
-		while (x <= slen)
-		{
-			if (s[x] == c)
-				return ((char *)&s[x]);
-			else
-				x++;
-		}
-		return (NULL);
+		if (s[x] == (char)c)
+			return ((char *)&s[x]);
+		else
+			x++;
 	}
+	return (NULL);
 }
 
 /*int	main(void)
