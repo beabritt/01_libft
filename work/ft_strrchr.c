@@ -22,14 +22,14 @@ char	*ft_strrchr(const char *s, int c)
 
 	slen = ft_strlen(s);
 	x = slen;
-		while (x <= slen && x >= 0)
-		{
-			if (s[x] == (char)c)
-				return ((char *) &s[x]);
-			else
-				x--;
-		}
-		return (NULL);
+	while (x <= slen && x >= 0)
+	{
+		if (s[x] == (char)c)
+			return ((char *) &s[x]);
+		else
+			x--;
+	}
+	return (NULL);
 }
 
 /*int	main(void)

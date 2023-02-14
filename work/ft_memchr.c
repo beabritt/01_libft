@@ -19,17 +19,21 @@ Devuelve un puntero a ese bite o NULL si no existe*/
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	*s2;
+	unsigned char	i;
 	size_t			x;
 
-	s2 = s;
+	s2 = (unsigned char *)s;
+	i = (unsigned char)c;
 	x = 0;
 	if (!n)
 		return (NULL);
-	while (s2[x] && x < n && s2[x] != c)
+	if (i > 255)
+		return (NULL);
+	while (s2[x] != '\0' && x < n - 1 && s2[x] != i)
 	{
 		x++;
 	}
-	if (s2[x] == c)
+	if (s2[x] == i)
 		return ((void *)&s2[x]);
 	else
 		return (NULL);
