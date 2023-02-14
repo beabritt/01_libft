@@ -17,10 +17,9 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	x;
-	int	slen;
+	const int	slen = ft_strlen(s);
+	int			x;
 
-	slen = ft_strlen(s);
 	x = 0;
 	while (x <= slen && (x >= 0 && x <= 255))
 	{

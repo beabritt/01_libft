@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include<unistd.h>
+#include "libft.h"
 
 /*copia n bytes del area de mem src al area dst. 
 Si dst y src se superponen, behaviour is undefined.*/
