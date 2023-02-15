@@ -20,7 +20,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	x;
 	size_t	y;
 
-	if (needle == '\0')
+	if (needle == (void *)0)
 		return ((char *)haystack);
 	x = 0;
 	y = 0;
