@@ -10,7 +10,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t		slen;
 
 	if (!s)
-		return (NULL);
+		return (0);
 	slen = ft_strlen(s);
 	if (len > slen)
 		len = slen;
@@ -20,13 +20,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	{
 		subs = (char *)malloc(1);
 		if (!subs)
-			return (NULL);
+			return (0);
 		*subs = 0;
 		return (subs);
 	}
 	subs = (char *)malloc(len + 1);
 	if (!subs)
-		return (NULL);
+		return (0);
 	ft_strlcpy(subs, &s[start], len +1);
 	return (subs);
 }

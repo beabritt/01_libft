@@ -14,7 +14,7 @@ char	*ft_strdup(const char *s1)
 	x = ft_strlen(s1) + 1;
 	s2 = (char *)malloc(x);
 	if (!s2)
-		return (NULL);
+		return (0);
 	ft_memcpy((void *)s2, (const void *)s1, x);
 	return ((char *)s2);
 }

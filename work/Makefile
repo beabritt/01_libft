@@ -21,7 +21,8 @@ SRC =	ft_isalpha.c \
 		ft_atoi.c \
 		ft_calloc.c \
 		ft_strdup.c \
-		ft_substr.c
+		ft_substr.c \
+		ft_strjoin.c
 
 OBJS= $(SRC:.c=.o)
 NAME = libft.a
