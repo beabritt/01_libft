@@ -4,6 +4,7 @@
 
 /*size_t	ft_strlen(const char *s);
 void	*ft_memcpy(void *dst, const void *src, size_t n);*/
+/*reserva suf memoria para s1 y la copia en s2*/
 
 char	*ft_strdup(const char *s1)
 {
