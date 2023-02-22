@@ -15,10 +15,28 @@
 #include <stdlib.h>
 #include "libft.h"
 
-static int	ft_search(char const *s1, char const *set)
-{
+/*Search for set characters in the first/last one of s1, and keep searching if it finds one.*/
 
+static int	ft_search(char const *s1, char const *set, size_t i)
+{
+	size_t	slen;
+
+	slen = ft_strlen(s1);
+	if (i == 0)
+	{
+		while (ft_strchr(set, (int)s1[i]) != NULL && i < slen)
+		i++;
+	}
+	else
+	{
+		while(ft_strchr(set, (int)s1[i]) != NULL && i > 0)
+		--i;
+	}
+	return (i);
 }
+
+/*Strtrim searches for set characters in s1 and "deletes" them.
+It returns a new string formed by the characters left*/
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -29,20 +47,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	if (!s1)
 		return (0);
-	x = 0;
 	slen = ft_strlen(s1);
 	if (slen == 0)
 		return (ft_strdup(""));
-	y = ft_strlen(s1) - 1;
-	
-	while (ft_strchr(set, (int)s1[x]) != NULL && x < slen)
-	{
-		x++;
-	}
-	while (ft_strchr(set, (int)s1[y]) != NULL &&  y > 0)
-	{
-		--y;
-	}	
+    x = ft_search(s1, set, 0);
+	y = ft_search(s1, set, ft_strlen(s1) -1);
 	if (x <= y)
 	{	
 		res = (char *)malloc(y - x + 2);
@@ -57,8 +66,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 int	main(void)
 {
-	char 	s1[] = "";
-	char	set[] = "";
+	char 	s1[] = "holoh";
+	char	set[] = "oh";
 	char	*p;
 
 	p = ft_strtrim (s1, set);
