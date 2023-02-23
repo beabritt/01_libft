@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
 
-/*Search for set characters in the first/last one of s1, and keep searching if it finds one.*/
+/*Search for set characters in the first/last one of s1, and keep searching 
+	if it finds one.*/
 
 static int	ft_search(char const *s1, char const *set, size_t i)
 {
@@ -29,7 +29,7 @@ static int	ft_search(char const *s1, char const *set, size_t i)
 	}
 	else
 	{
-		while(ft_strchr(set, (int)s1[i]) != NULL && i > 0)
+		while (ft_strchr(set, (int)s1[i]) != NULL && i > 0)
 		--i;
 	}
 	return (i);
@@ -50,21 +50,21 @@ char	*ft_strtrim(char const *s1, char const *set)
 	slen = ft_strlen(s1);
 	if (slen == 0)
 		return (ft_strdup(""));
-    x = ft_search(s1, set, 0);
+	x = ft_search(s1, set, 0);
 	y = ft_search(s1, set, ft_strlen(s1) -1);
 	if (x <= y)
 	{	
 		res = (char *)malloc(y - x + 2);
 		if (!res)
-			return(NULL);
+			return (NULL);
 		ft_strlcpy(res, &s1[x], y - x + 2);
 		return (res);
 	}
 	else
-		return (ft_calloc(1,1));
+		return (ft_calloc(1, 1));
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char 	s1[] = "holoh";
 	char	set[] = "oh";
@@ -74,4 +74,4 @@ int	main(void)
 	printf("%s \n", p);
 	free (p);
 	return (0);
-}
+}*/

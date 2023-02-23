@@ -30,3 +30,10 @@ int	funcion(int	(*p)(int))
 	printf("%c \n", (char)x);
 	return x;
 }
+
+int i;
+i = -1; // 0
+while (str[++i]) // str[0]
+{ // str[0]
+ 
+}

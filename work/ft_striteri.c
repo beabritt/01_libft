@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: becamino <becamino@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 13:08:15 by becamino          #+#    #+#             */
-/*   Updated: 2023/02/23 13:08:19 by becamino         ###   ########.fr       */
+/*   Created: 2023/02/23 13:19:56 by becamino          #+#    #+#             */
+/*   Updated: 2023/02/23 13:19:58 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,40 +20,35 @@
 	Par: - s1
 		 - the f function to apply */
 
-/*char	mi_toupper(unsigned int x, char c)
+/*char	mi_toupper(unsigned int x, char *c)
 {	
 	(void)x;
-	if (c >= 97 && c <= 122)
-		return (c - 32);
+	if (*c >= 97 && *c <= 122)
+		return (*c - 32);
 	else
-		return (c);
+		return (*c);
 }*/
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	size_t	x;
-	char	*res;
 
-	res = ft_strdup(s);
-	if (!res)
-		return (NULL);
 	x = 0;
 	while (s[x])
 	{
-		res[x] = (*f)(x, res[x]);
+		(*f)(x, &s[x]);
 		x++;
 	}
-	return (res);
 }
 
 /*int	main(void)
 {
 	char const	s [] = "hace mal dia";
 	char		*p;
-	char		(*f)(unsigned int, char);
+	char		(*f)(unsigned int, char*);
 
 	f = &mi_toupper;
-	p = ft_strmapi(s, f);
+	p = ft_striteri(s, f);
 	printf("%s \n", p);
 	free (p);
 	return (0);
