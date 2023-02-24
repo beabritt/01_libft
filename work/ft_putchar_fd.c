@@ -15,13 +15,15 @@
 #include<stdlib.h>
 #include "libft.h"
 
-void    ft_putchar_fd(char c, int fd)
-{
+/*Send the c character to a specified file descrittor*/
 
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
 }
 
-int main(void)
+/*int	main(void)
 {
-
-    
-}
+	ft_putchar_fd('f', 1);
+	return (0);
+}*/
