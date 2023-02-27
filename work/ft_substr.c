@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: becamino <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/27 16:03:01 by becamino          #+#    #+#             */
+/*   Updated: 2023/02/27 16:03:04 by becamino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
 
-//reserva espacio y devuelve una substring. Es necesario forzar el tamaño de len 
+//reserva espacio y devuelve una substr. Es necesario forzar el tamaño de len.
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -27,7 +39,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	subs = (char *)malloc(len + 1);
 	if (!subs)
 		return (0);
-	ft_strlcpy(subs, &s[start], len +1);
+	ft_strlcpy(subs, &s[start], len + 1);
 	return (subs);
 }
 
