@@ -15,45 +15,77 @@
 #include<stdlib.h>
 #include "libft.h"
 
-int	ft_search(char const *s, int c)
+static int	ft_search(const char *s, char c)
 {
 	size_t	x;
 
 	x = 0;
-	while (s && s[x] != c)
-	{
+	while (s[x] != '\0' && s[x] != c)
 		x++;
-	}
 	return (x);
+}
+
+static size_t	ft_wcounter(char const *s, char c)
+{
+	size_t	x;
+	size_t	cont;
+
+	x = 0;
+	cont = 0;
+	while (s[x] != '\0')
+	{
+		while (s[x] != '\0' && s[x] == c)
+			x++;	
+		while (s[x] != '\0' && s[x] != c)
+			x++;
+		cont++;
+	}
+	return (cont);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t x;
-	size_t	slen;
-	size_t	s1len;
-	size_t	s2len;
+	size_t 	x;
+	size_t	y;
+	size_t	wc;
+	size_t	a;
 	char	**arr;
 
 	if (!s)
 		return (0);
-	x = ft_search(s, c);
-	slen = ft_strlen(s);
-	
-	char arr = ft_calloc(2, slen +1);
-	ft_strlcpy (arr [1][0],s[0], x) + 1;
-	ft_strlcpy (arr [2] [0], s[x], slen - x);
-	return ()
-
+	wc = ft_wcounter(s, c);
+	arr = ft_calloc(wc, sizeof(char*));
+	if (!arr)
+		return (0);
+	x = -1;
+	while (s[x] != '\0')
+	{	
+		while (s[x + 1] != '\0' && s[x] == c)
+			x++;
+		if (x < 0)
+			y = 0;
+		else
+			y = x;
+		x = ft_search(s[x + 1], c);
+		a = 0;
+		arr[a] = ft_substr(s, y, x - y + 1);
+		a++;
+		if (!arr[a])
+			while (arr[a])
+				free (arr[a--]);
+	}
+	arr[a] = '\0';
+	return (arr);
 }
 
 int	main(void)
 {
 	char	s[14] = "Que puto frio";
 	char	c;
+	char	*array;
 
 	c ='p';
-	ft_split(s, c);
-
+	array = ft_split(s, c);
+	free (array);
 	return (0);
 }

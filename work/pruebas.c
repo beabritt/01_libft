@@ -2,38 +2,31 @@
 #include <stdlib.h>
 //#include "libft.h"
 
-int funcion(int (*p)(int));
-int	ft_toupper(int c);
+#include<unistd.h>
 
-int	main (void)
+static int	ft_wcounter(char const *s, char c)
 {
-	int	x;
+	size_t	x;
+	size_t	cont;
 
-	x = funcion (ft_toupper);
-	printf("%d \n", x);
-	return 0;
+	x = 0;
+	cont = 0;
+	while (s[x] != '\0')
+	{
+		while (s[x] != '\0' && s[x] == c)
+			x++;	
+		while (s[x] != '\0' && s[x] != c)
+			x++;
+		cont++;
+	}
+	return (cont);
 }
 
-int	ft_toupper(int c)
+int main() 
 {
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	else
-		return (c);
-}
+	size_t	cont;
 
-int	funcion(int	(*p)(int))
-{
-	int	x;
-
-	x = p(104);
-	printf("%c \n", (char)x);
-	return x;
-}
-
-int i;
-i = -1; // 0
-while (str[++i]) // str[0]
-{ // str[0]
- 
+	cont = ft_wcounter("Que puto frio", 'p');
+	printf("%zu \n", cont);
+	return (0);
 }
