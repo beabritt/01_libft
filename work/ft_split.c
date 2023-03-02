@@ -32,7 +32,7 @@ static size_t	ft_wcounter(char const *s, char c)
 	while (s[x] != '\0')
 	{
 		while (s[x] != '\0' && s[x] == c)
-			x++;	
+			x++;
 		while (s[x] != '\0' && s[x] != c)
 			x++;
 		cont++;
@@ -40,52 +40,55 @@ static size_t	ft_wcounter(char const *s, char c)
 	return (cont);
 }
 
-char	**ft_split(char const *s, char c)
+static void	*ft_free(char **arr, size_t a)
 {
-    int       x;
-    size_t    y;
-    size_t    wc;
-    size_t    a;
-    char    **arr;
-
-    if (!s)
-        return (0);
-    wc = ft_wcounter(s, c);
-    arr = (char **)calloc(wc + 1, sizeof(char *));
-    if (!arr)
-        return (0);
-    x = 0;
-    a = 0;
-    while (s[x] != '\0')
-    {    
-        while (s[x] != '\0' && s[x] == c)
-            x++;
-        if (x < 0)
-            y = 0;
-        else
-            y = x;
-        x = ft_search(s, c, x);
-        arr[a] = ft_substr(s, y, x - y);
-        if (!arr[a])
-            while (arr[a])
-                free (arr[a--]);
-        a++;
-    }
-   	arr[a] = calloc(1, sizeof(char));
-    return (arr);
+	while (!arr[a])
+	{
+		free(arr[a]);
+		a--;
+	}
+	free(arr);
+	return (NULL);
 }
 
-int	main(void)
+char	**ft_split(char const *s, char c)
 {
-	char	s[14] = "Que puto frio";
+	int			x;
+	size_t		y;
+	size_t		a;
+	char		**arr;
+
+	arr = (char **)ft_calloc(ft_wcounter(s, c) + 1, sizeof(char *));
+	if (!arr || !s)
+		return (NULL);
+	x = 0;
+	a = 0;
+	while (s[x] != '\0')
+	{
+		while (s[x] != '\0' && s[x] == c)
+			x++;
+		y = x;
+		x = ft_search(s, c, x);
+		arr[a] = ft_substr(s, y, x - y);
+		if (!arr[a])
+			return (ft_free(arr, a));
+		a++;
+	}
+	return (arr);
+}
+
+/*int	main(void)
+{
+	//char	s[14] = "Que puto frio";
 	char	c;
 	char	**array;
 
-	c ='p';
-	array = ft_split(s, c);
+	c =' ';
+	array = ft_split("lorem ipsum dolor sit amet, \
+		consectetur adipiscing elit. Sed non risus. Suspendisse   ", c);
 	printf("%s \n", array[0]);
 	printf("%s \n", array[1]);
 	printf("%s \n", array[2]);
 	free (array);
 	return (0);
-}
+}*/
