@@ -24,20 +24,22 @@ static int	ft_search(const char *s, char c, int x)
 
 static size_t	ft_wcounter(char const *s, char c)
 {
-	size_t	x;
-	size_t	cont;
+    size_t    x;
+    size_t    cont;
 
-	x = 0;
-	cont = 0;
-	while (s[x] != '\0')
-	{
-		while (s[x] != '\0' && s[x] == c)
-			x++;
-		while (s[x] != '\0' && s[x] != c)
-			x++;
-		cont++;
-	}
-	return (cont);
+    x = 0;
+    cont = 0;
+     
+    if (s[x] != c)
+      cont++;
+      x++;
+    while (s[x] != '\0')
+    {
+      if (s[x] != c && s[x - 1] == c)
+      cont++;
+    x++;
+    }
+    return (cont);
 }
 
 static void	*ft_free(char **arr, size_t a)
@@ -63,7 +65,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	x = 0;
 	a = 0;
-	while (s[x] != '\0')
+	while (a < ft_wcounter(s, c))
 	{
 		while (s[x] != '\0' && s[x] == c)
 			x++;
