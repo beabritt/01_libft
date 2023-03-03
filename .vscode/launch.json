@@ -1,0 +1,16 @@
+{
+    "configurations": [
+    {
+        "name": "DEBUG",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/work/a.out",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${fileDirname}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "lldb"
+    }
+    ]
+}

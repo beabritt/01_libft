@@ -31,8 +31,10 @@ static size_t	ft_wcounter(char const *s, char c)
     cont = 0;
      
     if (s[x] != c)
-      cont++;
-      x++;
+    {
+		cont++;
+    	x++;
+	}
     while (s[x] != '\0')
     {
       if (s[x] != c && s[x - 1] == c)
@@ -60,8 +62,10 @@ char	**ft_split(char const *s, char c)
 	size_t		a;
 	char		**arr;
 
-	arr = (char **)ft_calloc(ft_wcounter(s, c) + 1, sizeof(char *));
-	if (!arr || !s)
+	if (!s)
+		return (NULL);
+	arr = ft_calloc(ft_wcounter(s, c) + 1, sizeof(char *));
+	if (!arr)
 		return (NULL);
 	x = 0;
 	a = 0;
@@ -85,12 +89,12 @@ char	**ft_split(char const *s, char c)
 	char	c;
 	char	**array;
 
-	c =' ';
-	array = ft_split("lorem ipsum dolor sit amet, \
-		consectetur adipiscing elit. Sed non risus. Suspendisse   ", c);
+	c ='z';
+	array = ft_split("", c);
 	printf("%s \n", array[0]);
 	printf("%s \n", array[1]);
 	printf("%s \n", array[2]);
 	free (array);
 	return (0);
-}*/
+}
+*/
