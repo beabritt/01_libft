@@ -5,7 +5,7 @@
 
 /*Send the n number to a given file descriptor*/
 
-static int	my_counter(int n)
+static int	my_counter(long n)
 {
 	int	cont;
 
@@ -18,9 +18,9 @@ static int	my_counter(int n)
 	return (cont);
 }
 
-static int	ft_div(int n)
+static int	ft_div(long n)
 {
-	int	x;
+	long	x;
 
 	x = n;
 	if (x > 9)
@@ -38,22 +38,22 @@ void	ft_putnbr_fd(int n, int fd)
 	char	s [20];
 	size_t	cont;
 	size_t	slen;
+	long	num;
 
-	if (n < 0)
+	num = n;
+	if (num < 0)
 	{	
 		write(fd, "-", 1);
-		n = -n;
+		num = -num;
 	}
-	if (n == -2147483648)
-		write(fd, "2147483648", 10);
-	if (n >= 0)
+	if (num >= 0)
 	{
-		cont = my_counter(n) + 1;
+		cont = my_counter(num) + 1;
 		slen = cont;
 		while (cont > 0)
 		{
-			c = (ft_div(n));
-			n = n / 10;
+			c = (ft_div(num));
+			num = num / 10;
 			s[cont - 1] = c;
 			cont--;
 		}

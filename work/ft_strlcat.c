@@ -24,7 +24,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	x = 0;
 	if (l_dst > dstsize)
 		return (l_src + dstsize);
-	while (x < dstsize - l_dst - 1)
+	while (dst && x < dstsize - l_dst - 1)
 	{
 	dst[l_dst + x] = src [x];
 	x++;
@@ -32,3 +32,14 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[l_dst + x + 1] = '\0';
 	return (l_src + l_dst);
 }
+
+/*int	main(void)
+{
+	char	dst[14] = "a";
+	char	src[] = "lorem ipsum dolor sit amet";
+	size_t	dstsize;
+
+	dstsize = 15;
+	ft_strlcat(dst, src, dstsize);
+	return (0);
+}*/
