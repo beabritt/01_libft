@@ -3,7 +3,8 @@
 #include<stdlib.h>
 #include "libft.h"
 
-/*Send the n number to a given file descrittor*/
+/*Send the n number to a given file descriptor*/
+
 static int	my_counter(int n)
 {
 	int	cont;
@@ -59,6 +60,7 @@ void	ft_putnbr_fd(int n, int fd)
 		write(fd, s, slen);
 	}
 }
+
 
 /*int	main(void)
 {
