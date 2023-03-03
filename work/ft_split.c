@@ -30,7 +30,7 @@ static size_t	ft_wcounter(char const *s, char c)
     x = 0;
     cont = 0;
      
-    if (s[x] != c)
+    if (s[x] != c && s[x] != '\0')
     {
 		cont++;
     	x++;
