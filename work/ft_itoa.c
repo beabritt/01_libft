@@ -73,15 +73,21 @@ static char	*ft_wnstr(char *s, size_t cont, long n)
 
 char	*ft_wpstrs(char *s, size_t cont, long n)
 {
-	size_t	x;
 	char	c;
 
-	x = 0;
+	s[cont - 1] = '\0';
+	while (cont > 1)
+	{
+		c = (ft_div(n));
+		n = n / 10;
+		s[cont - 2] = c;
+		cont--;
+	}
+	return (s);
 }
 
 char	*ft_itoa(int n)
 {
-	char	c;
 	char	*s;
 	size_t	cont;
 	size_t	x;
@@ -92,20 +98,11 @@ char	*ft_itoa(int n)
 	cont = my_counter(num) + 1;
 	s = malloc(cont * sizeof(char));
 	if (!s)
-		return(0);
+		return (0);
 	else if (num < 0)
 		s = ft_wnstr(s, cont, num);
-	if (num >= 0)
-	{
-		s[cont - 1] = '\0';
-		while (cont > 1)
-		{
-			c = (ft_div(num));
-			num = num / 10;
-			s[cont - 2] = c;
-			cont--;
-		}
-	}
+	else
+		s = ft_wpstrs(s, cont, n);
 	return (s);
 }
 
