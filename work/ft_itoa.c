@@ -14,7 +14,7 @@
 #include<stdlib.h>
 #include "libft.h"
 
-static int	my_counter(int n)
+static int	my_counter(long n)
 {
 	int	cont;
 
@@ -24,6 +24,8 @@ static int	my_counter(int n)
 		cont++;
 		n = -n;
 	}
+	else if (n == 0)
+		cont++;
 	while (n > 0)
 	{
 		n = n / 10;
@@ -32,9 +34,9 @@ static int	my_counter(int n)
 	return (cont);
 }
 
-static int	ft_div(int n)
+static int	ft_div(long n)
 {
-	int	x;
+	long	x;
 
 	x = n;
 	if (x > 9)
@@ -46,7 +48,7 @@ static int	ft_div(int n)
 		return (n + '0');
 }
 
-char	*ft_wstr(char *s, size_t cont, int n)
+static char	*ft_wnstr(char *s, size_t cont, long n)
 {
 	size_t	x;
 	char	c;
@@ -58,6 +60,7 @@ char	*ft_wstr(char *s, size_t cont, int n)
 		x++;
 	}
 	n = -n;
+	s[cont - 1] = '\0';
 	while (cont > 2)
 	{
 		c = (ft_div(n));
@@ -68,24 +71,37 @@ char	*ft_wstr(char *s, size_t cont, int n)
 	return (s);
 }
 
+char	*ft_wpstrs(char *s, size_t cont, long n)
+{
+	size_t	x;
+	char	c;
+
+	x = 0;
+}
+
 char	*ft_itoa(int n)
 {
 	char	c;
 	char	*s;
 	size_t	cont;
 	size_t	x;
+	long	num;
 
+	num = n;
 	x = 0;
-	cont = my_counter(n) + 1;
-	s = calloc(cont, sizeof(char));
-	if (n < 0)
-		s = ft_wstr(s, cont, n);
-	if (n >= 0)
+	cont = my_counter(num) + 1;
+	s = malloc(cont * sizeof(char));
+	if (!s)
+		return(0);
+	else if (num < 0)
+		s = ft_wnstr(s, cont, num);
+	if (num >= 0)
 	{
+		s[cont - 1] = '\0';
 		while (cont > 1)
 		{
-			c = (ft_div(n));
-			n = n / 10;
+			c = (ft_div(num));
+			num = num / 10;
 			s[cont - 2] = c;
 			cont--;
 		}
@@ -93,11 +109,11 @@ char	*ft_itoa(int n)
 	return (s);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char	*s;
 
 	s = ft_itoa(-556);
 	printf("%s \n", s);
 	return (0);
-}
+}*/
