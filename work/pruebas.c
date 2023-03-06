@@ -13,43 +13,49 @@
 #include<unistd.h>
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+#include<stdio.h>
+#include "libft.h"
+
+/*	if (haystack == (void *)0 || needle == (void *)0)
+		return (NULL);
+	busca str2 en str1 en un n numero de bytes*/
+
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	dlen;
-	size_t	slen;
 	size_t	x;
 	size_t	y;
 
-	dlen = ft_strlen(dst);
-	//printf("%zu \n", dlen);
-	slen = ft_strlen(src);
-	if (dlen > dstsize)
-		return(slen + dstsize);
-	else
+	x = 0;
+	y = 0;
+	while (x < len && haystack[x] != '\0' && needle[y] != '\0')	
 	{
-		x = dlen;
-		y = 0;
-		while (src[y] && x < dstsize - 1)
-		{
-			dst[x] = src[y];
+		while (x < len && haystack[x] != needle[y]
+		&& haystack[x] != '\0')
 			x++;
-			y++;
-		}
-		dst[x] = '\0';
-		//printf("%s \n", dst);
-		return (dlen + slen);
+		if (x == len || haystack[x] == '\0')
+			return (0);
+		else
+			while (x < len && haystack[x] == needle[y] 
+					&& needle[y] != '\0')
+			{	
+				x++;
+				y++;
+			}
 	}
+	if ((haystack[x - y] == needle[0] && needle[y] == '\0') || needle[y] == '\0')
+		return ((char *)&haystack[x - y]);
+	else
+		return (0);
 }
 
-int	main(void)
+/*int main(void)
 {
-	char	dst[30] = "B";
-	char	src[] = "123";
-	size_t	dstsize;
-	size_t	x;
+    char    h [] = "lorem ipsum dolor sit amet";
+	char	*s;
+    size_t  len;
 
-	dstsize = 0;
-	x = ft_strlcat(dst, src, dstsize);
-	printf("%zu \n", x);
-	return (0);
-}
+    len = 30; 
+    s =  ft_strnstr(h, "ipsum", len);
+	printf("%s \n", s);
+    return (0);
+}*/

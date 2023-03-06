@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include<stdio.h>
+#include "libft.h"
+
 /*	if (haystack == (void *)0 || needle == (void *)0)
 		return (NULL);
 	busca str2 en str1 en un n numero de bytes*/
@@ -20,41 +22,38 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	x;
 	size_t	y;
 
-	if (needle == (void *)0)
-		return ((char *)haystack);
 	x = 0;
 	y = 0;
-	while (x < len && haystack[x] != '\0' && needle[y] != '\0')	
+	while (x < len && haystack[x] != '\0' && needle[y] != '\0')
 	{
 		while (x < len && haystack[x] != needle[y]
-		&& haystack[x] != '\0')
-		{
+			&& haystack[x] != '\0')
 			x++;
-		}
 		if (x == len || haystack[x] == '\0')
 			return (0);
 		else
-			while (x < len && haystack[x] == needle[y] 
-					&& needle[y] != '\0')
+			while (x < len && haystack[x] == needle[y]
+				&& needle[y] != '\0')
 			{	
 				x++;
 				y++;
 			}
 	}
-		if (haystack[x - 1] != needle[y - 1])
-			return (0);
-		else
-			return ((char *)&haystack[x - y]);
+	if ((haystack[x - y] == needle[0] && needle[y] == '\0')
+		|| needle[0] == '\0')
+		return ((char *)&haystack[x - y]);
+	else
+		return (0);
 }
 
 /*int main(void)
 {
-    char    h [25] = "Una aguja en un pajar";
+    char    h [] = "lorem ipsum dolor sit amet";
 	char	*s;
     size_t  len;
 
-    len = 15; 
-    s =  ft_strnstr(h, "aguja", len);
+    len = 30; 
+    s =  ft_strnstr(h, "ipsum", len);
 	printf("%s \n", s);
     return (0);
 }*/
