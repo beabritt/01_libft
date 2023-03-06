@@ -90,11 +90,9 @@ char	*ft_itoa(int n)
 {
 	char	*s;
 	size_t	cont;
-	size_t	x;
 	long	num;
 
 	num = n;
-	x = 0;
 	cont = my_counter(num) + 1;
 	s = malloc(cont * sizeof(char));
 	if (!s)

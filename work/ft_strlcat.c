@@ -15,31 +15,39 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
+	size_t	dlen;
+	size_t	slen;
 	size_t	x;
-	size_t	l_src;
-	size_t	l_dst;
+	size_t	y;
 
-	l_src = ft_strlen(src);
-	l_dst = ft_strlen(dst);
-	x = 0;
-	if (l_dst > dstsize)
-		return (l_src + dstsize);
-	while (dst && x < dstsize - l_dst - 1)
+	dlen = ft_strlen(dst);
+	slen = ft_strlen(src);
+	if (dstsize <= dlen)
+		return (slen + dstsize);
+	else
 	{
-	dst[l_dst + x] = src [x];
-	x++;
+		x = dlen;
+		y = 0;
+		while (src[y] && x < dstsize - 1)
+		{
+			dst[x] = src[y];
+			x++;
+			y++;
+		}
+		dst[x] = '\0';
+		return (dlen + slen);
 	}
-	dst[l_dst + x + 1] = '\0';
-	return (l_src + l_dst);
 }
 
 /*int	main(void)
 {
-	char	dst[14] = "a";
-	char	src[] = "lorem ipsum dolor sit amet";
+	char	dst[30] = "B";
+	char	src[] = "123";
 	size_t	dstsize;
+	size_t	x;
 
-	dstsize = 15;
-	ft_strlcat(dst, src, dstsize);
+	dstsize = 0;
+	x = ft_strlcat(dst, src, dstsize);
+	printf("%zu \n", x);
 	return (0);
 }*/

@@ -11,83 +11,45 @@
 /* ************************************************************************** */
 
 #include<unistd.h>
-#include<stdio.h>
-#include<stdlib.h>
 #include "libft.h"
 
-static int	ft_search(const char *s, char c, int x)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	while (s[x] != '\0' && s[x] != c)
-		x++;
-	return (x);
-}
+	size_t	dlen;
+	size_t	slen;
+	size_t	x;
+	size_t	y;
 
-static size_t	ft_wcounter(char const *s, char c)
-{
-    size_t    x;
-    size_t    cont;
-
-    x = 0;
-    cont = 0;
-     
-    if (s[x] != c)
-      cont++;
-      x++;
-    while (s[x] != '\0')
-    {
-      if (s[x] != c && s[x - 1] == c)
-      cont++;
-    x++;
-    }
-    return (cont);
-}
-
-static void	*ft_free(char **arr, size_t a)
-{
-	while (!arr[a])
+	dlen = ft_strlen(dst);
+	//printf("%zu \n", dlen);
+	slen = ft_strlen(src);
+	if (dlen > dstsize)
+		return(slen + dstsize);
+	else
 	{
-		free(arr[a]);
-		a--;
-	}
-	free(arr);
-	return (NULL);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	int			x;
-	size_t		y;
-	size_t		a;
-	char		**arr;
-
-	arr = (char **)ft_calloc(ft_wcounter(s, c) + 1, sizeof(char *));
-	if (!arr || !s)
-		return (NULL);
-	x = 0;
-	a = 0;
-	while (a < ft_wcounter(s, c))
-	{
-		while (s[x] != '\0' && s[x] == c)
+		x = dlen;
+		y = 0;
+		while (src[y] && x < dstsize - 1)
+		{
+			dst[x] = src[y];
 			x++;
-		y = x;
-		x = ft_search(s, c, x);
-		arr[a] = ft_substr(s, y, x - y);
-		if (!arr[a])
-			return (ft_free(arr, a));
-		a++;
+			y++;
+		}
+		dst[x] = '\0';
+		//printf("%s \n", dst);
+		return (dlen + slen);
 	}
-	return (arr);
 }
 
 int	main(void)
 {
-	//char	s[14] = "Que puto frio";
-	char	c;
-	char	**array;
+	char	dst[30] = "B";
+	char	src[] = "123";
+	size_t	dstsize;
+	size_t	x;
 
-	c = 'z';
-	array = ft_split("", c);
-	printf("%s$\n", array[0]);
-	free (array);
+	dstsize = 0;
+	x = ft_strlcat(dst, src, dstsize);
+	printf("%zu \n", x);
 	return (0);
 }
