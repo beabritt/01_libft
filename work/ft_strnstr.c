@@ -24,33 +24,37 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		return ((char *)haystack);
 	x = 0;
 	y = 0;
-	while (x < len && haystack[x] != needle[y]
-	 && haystack[x] != '\0')
+	while (x < len && haystack[x] != '\0' && needle[y] != '\0')	
 	{
-		x++;
-	}
-	if (x == len || haystack[x] == '\0')
-		return (0);
-	else
-		while (x < len && haystack[x] == needle[y] 
-				&& needle[y + 1] != '\0')
-		{	
+		while (x < len && haystack[x] != needle[y]
+		&& haystack[x] != '\0')
+		{
 			x++;
-			y++;
 		}
-	if (haystack[x] != needle[y])
-		return (0);
-	else
-		return ((char *)&haystack[x - y]);
+		if (x == len || haystack[x] == '\0')
+			return (0);
+		else
+			while (x < len && haystack[x] == needle[y] 
+					&& needle[y] != '\0')
+			{	
+				x++;
+				y++;
+			}
+	}
+		if (haystack[x - 1] != needle[y - 1])
+			return (0);
+		else
+			return ((char *)&haystack[x - y]);
 }
 
 /*int main(void)
 {
     char    h [25] = "Una aguja en un pajar";
-    char    n [0];
+	char	*s;
     size_t  len;
 
-    len = 20; 
-    printf("%s \n", ft_strnstr(h, n, len));
+    len = 15; 
+    s =  ft_strnstr(h, "aguja", len);
+	printf("%s \n", s);
     return (0);
 }*/
