@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: becamino <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 16:07:03 by becamino          #+#    #+#             */
-/*   Updated: 2023/02/27 16:07:05 by becamino         ###   ########.fr       */
+/*   Created: 2023/02/13 16:23:53 by becamino          #+#    #+#             */
+/*   Updated: 2023/02/13 16:23:56 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include<unistd.h>
-#include "libft.h"
 
 #include<stdio.h>
 #include "libft.h"
 
-/*	if (haystack == (void *)0 || needle == (void *)0)
-		return (NULL);
-	busca str2 en str1 en un n numero de bytes*/
+/*	Search for s2 in s1 for n bytes.*/
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
@@ -27,22 +22,21 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	x = 0;
 	y = 0;
-	while (x < len && haystack[x] != '\0' && needle[y] != '\0')	
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (x < len && haystack[x] != '\0' && needle[y] != '\0')
 	{
 		while (x < len && haystack[x] != needle[y]
-		&& haystack[x] != '\0')
+			&& haystack[x] != '\0')
 			x++;
-		if (x == len || haystack[x] == '\0')
-			return (0);
-		else
-			while (x < len && haystack[x] == needle[y] 
-					&& needle[y] != '\0')
-			{	
-				x++;
-				y++;
-			}
+		while (x < len && haystack[x] == needle[y]
+			&& needle[y] != '\0')
+		{	
+			x++;
+			y++;
+		}
 	}
-	if ((haystack[x - y] == needle[0] && needle[y] == '\0') || needle[y] == '\0')
+	if (haystack[x - y] == needle[0] && needle[y] == '\0')
 		return ((char *)&haystack[x - y]);
 	else
 		return (0);
