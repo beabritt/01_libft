@@ -11,9 +11,12 @@ int	main(void)
 {
 	t_list	*lst;
 	t_list	*new;
+	int		y;
+	void	*x;
 
-	lst = ft_lstnew();
-	new = ft_lstnew();
+	y = 59;
+	x = &y;
+	new = ft_lstnew(x);
 	ft_lstadd_front(lst, new);
-	
+	return(0);
 }

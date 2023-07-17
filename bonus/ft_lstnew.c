@@ -16,13 +16,15 @@ t_list	*ft_lstnew(void *content)
 	return(new);
 }
 
-int	main(void)
+/*int	main(void)
 {
-	t_list	try;
-	int	x;
+	t_list	*try;
+	void	*x;
+	int		y;
 
-	x = 59;
+	y = 59;
+	x = &y;
 	try = ft_lstnew(x);
-	printf("%i", try.content);
+	printf("%i", *(int*)try->content); //castear porque es p a void
 	return(0);
-}
+}*/
