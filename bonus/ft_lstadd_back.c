@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 15:59:48 by becamino          #+#    #+#             */
-/*   Updated: 2023/07/18 16:45:26 by becamino         ###   ########.fr       */
+/*   Created: 2023/07/18 17:33:54 by becamino          #+#    #+#             */
+/*   Updated: 2023/07/18 18:22:16 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-//#include<stdio.h>
 #include "libft.h"
+#include<stdio.h>
 
-/*Creates a new node using malloc.
-Content will be the parameter content.
-Next will be null*/
-t_list	*ft_lstnew(void *content)
+//Adds 'new' node to the end of the list 'lst'.
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*new;
-
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return(NULL);
-	new->content = content;
-	new->next = NULL;
-	return(new);
+	t_list	*last;
+	
+	if(!lst)
+		*lst = new;
+	else
+	{	
+		while(lst != NULL)
+		{
+			last = *lst;
+			
+		
+		}
+	
+		last->next = new;
+	}
 }
 
-/*int	main(void)
+int	main(void)
 {
-	t_list	*try;
-	void	*x;
-	int		y;
-
-	y = 59;
-	x = &y;
-	try = ft_lstnew(x);
-	printf("%i", *(int*)try->content); //castear porque es p a void
+	t_list	*new;
+	t_list	*lst;
+	
 	return(0);
-}*/
+}
