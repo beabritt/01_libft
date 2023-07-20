@@ -28,7 +28,7 @@ t_list	*ft_lstlast(t_list *lst)
 	return(last);	
 }
 
-int	main(void)
+/*int	main(void)
 {
 	t_list	*plst;
 	t_list	*lst;
@@ -36,4 +36,4 @@ int	main(void)
 	lst = ft_lstlast(plst);
 	printf("%d\n", *(int*)lst->content);
 	return(0);
-}
+}*/
