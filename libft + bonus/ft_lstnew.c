@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 15:59:56 by becamino          #+#    #+#             */
-/*   Updated: 2023/07/18 16:45:22 by becamino         ###   ########.fr       */
+/*   Created: 2023/07/18 15:59:48 by becamino          #+#    #+#             */
+/*   Updated: 2023/07/18 16:45:26 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-/*Add the node "new" at the beginning
-of the list.*/
-void	ft_lstadd_front(t_list **lst, t_list *new)
+/*Creates a new node using malloc.
+Content will be the parameter content.
+Next will be null*/
+t_list	*ft_lstnew(void *content)
 {
-	new->next = *lst;
-	*lst = new;
+	t_list	*new;
+
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
 
 /*int	main(void)
 {
-	t_list	*lst;
-	t_list	*plst;
-	t_list	new;
-	int		w;
-	void	*z;
+	t_list	*try;
+	void	*x;
+	int		y;
 
-	new.content = (void *)59;
-	new.next = NULL;
-	w = 60;
-	z = &w;
-	lst = ft_lstnew(z);
-	plst = lst;
-	ft_lstadd_front(&lst, &new);
-	printf("%d\n", *(int *)lst->content);
-	free(plst);
+	y = 59;
+	x = &y;
+	try = ft_lstnew(x);
+	printf("%i", *(int*)try->content); //castear porque es p a void
 	return(0);
 }*/

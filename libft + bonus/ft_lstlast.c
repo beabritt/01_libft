@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 15:59:56 by becamino          #+#    #+#             */
-/*   Updated: 2023/07/18 16:45:22 by becamino         ###   ########.fr       */
+/*   Created: 2023/07/18 16:55:28 by becamino          #+#    #+#             */
+/*   Updated: 2023/07/18 17:46:17 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*Add the node "new" at the beginning
-of the list.*/
-void	ft_lstadd_front(t_list **lst, t_list *new)
+//Returns the last node.
+t_list	*ft_lstlast(t_list *lst)
 {
-	new->next = *lst;
-	*lst = new;
+	t_list	*last;
+
+	if (!lst)
+		return (NULL);
+	while (lst != NULL)
+	{
+		last = lst;
+		lst = lst->next;
+	}
+	return (last);
 }
 
 /*int	main(void)
 {
-	t_list	*lst;
 	t_list	*plst;
-	t_list	new;
-	int		w;
-	void	*z;
-
-	new.content = (void *)59;
-	new.next = NULL;
-	w = 60;
-	z = &w;
-	lst = ft_lstnew(z);
-	plst = lst;
-	ft_lstadd_front(&lst, &new);
-	printf("%d\n", *(int *)lst->content);
-	free(plst);
+	t_list	*lst;
+	
+	lst = ft_lstlast(plst);
+	printf("%d\n", *(int*)lst->content);
 	return(0);
 }*/

@@ -9,14 +9,13 @@
 /*   Updated: 2023/07/18 17:23:02 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 //Count the number of nodes in a list.
 
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-    int	i;
+	int	i;
 
 	if (!lst)
 		return (0);
@@ -26,10 +25,10 @@ int ft_lstsize(t_list *lst)
 		i++;
 		lst = lst->next;
 	}
-	return(i);
+	return (i);
 }
 
-int main(void)
+/*int main(void)
 {
     t_list  *plst;
     t_list  lst;
@@ -49,4 +48,4 @@ int main(void)
     printf("%d\n", x);
 	printf("%d\n", *(int*)lst.content);
     return(0);
-}
+}*/

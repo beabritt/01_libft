@@ -33,8 +33,11 @@ SRC =	ft_isalpha.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c 
 
+SRCbonus = 		ft_lstnew.c \
+		ft_lstadd_front.c
 
-OBJS= $(SRC:.c=.o)
+OBJS = $(SRC:.c=.o)
+OBJSbonus = $(SRCbonus:.c=.o)
 NAME = libft.a
 DPS = libft.h
 
@@ -54,13 +57,15 @@ $(NAME): $(OBJS)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+bonus: $(OBJSbonus)
+	$(AR) $(NAME) $(OBJSbonus)
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJSbonus)
 
 fclean:
 	rm -f *~ $(NAME) *.o
-	
 
 re: fclean all
-
+	
 .PHONY: all clean fclean re bonus
