@@ -1,6 +1,15 @@
-#include<unistd.h>
-#include<stdio.h>
-#include<stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/25 12:26:43 by becamino          #+#    #+#             */
+/*   Updated: 2023/07/25 12:26:46 by becamino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /*Send the n number to a given file descriptor*/

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/25 12:25:30 by becamino          #+#    #+#             */
+/*   Updated: 2023/07/25 12:28:12 by becamino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 //Deletes and free the node 'lst' and consecutives,
@@ -18,7 +30,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	while (aux != NULL)
 	{
 		aux = aux->next;
-		ft_lstdelone(*lst,(del));
+		ft_lstdelone(*lst, (del));
 		*lst = aux;
 	}
 }
