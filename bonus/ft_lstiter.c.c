@@ -1,45 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 12:40:32 by becamino          #+#    #+#             */
-/*   Updated: 2023/07/25 13:08:11 by becamino         ###   ########.fr       */
+/*   Created: 2023/07/25 14:55:24 by becamino          #+#    #+#             */
+/*   Updated: 2023/07/25 14:58:01 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//Iters 'lst' list and applies function 'f' in every node content.
-/*void	ft_zero(void *p)
+t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	
-}*/
-
-void	ft_lstiter(t_list *lst, void (*f)(void *))
-{	
-	if (!lst || !f)
-		return ;
-	while (lst != NULL)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+    
 }
-
-/*int main(void)
+int main (void)
 {
-	t_list	*lst;
-	int		x;
-	void	*y;
-	void	(*f)(void *);
-	
-
-	x = 5;
-	y = &x;
-	lst = ft_lstnew(y);
-	f = &ft_zero;
-	return (0);
-}*/
+    
+    return (0);
+}
