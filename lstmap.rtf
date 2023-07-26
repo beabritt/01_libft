@@ -1,0 +1,123 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 #include<unistd.h>\
+#include<stdlib.h>\
+\
+typedef struct s_list\
+\{\
+    void            *content;\
+    struct s_list    *next;\
+\}                    t_list;\
+\
+void    ft_del(void *p);\
+\
+t_list    *ft_lstnew(void *content)\
+\{\
+    t_list    *new;\
+\
+    new = malloc(sizeof(t_list));\
+    if (!new)\
+        return (NULL);\
+    new->content = content;\
+    new->next = NULL;\
+    return (new);\
+\}\
+\
+void    ft_lstadd_back(t_list **lst, t_list *new)\
+\{\
+    t_list    *aux;\
+\
+    if (!lst || !new)\
+        return ;\
+    else if (!*lst)\
+        *lst = new;\
+    else\
+    \{    \
+        aux = *lst;\
+        while (aux->next != NULL)\
+        \{\
+            aux = aux->next;\
+        \}\
+        aux->next = new;\
+    \}\
+\}\
+\
+void    ft_del(void *p)\
+\{\
+    p = (void *)0;\
+\}\
+\
+void    ft_lstdelone(t_list *lst, void (*del)(void *))\
+\{\
+    if (!lst || !del)\
+        return ;\
+    (del)(lst->content);\
+    free(lst);\
+\}\
+\
+void    ft_lstclear(t_list **lst, void (*del)(void *))\
+\{\
+    t_list    *aux;\
+\
+    if (!*lst || !del)\
+        return ;\
+    aux = *lst;\
+    while (aux != NULL)\
+    \{\
+        aux = aux->next;\
+        ft_lstdelone(*lst, (del));\
+        *lst = aux;\
+    \}\
+\}\
+void function(void *p)\
+\{\
+    int x;\
+    \
+    x = 1;\
+    *(int *)p = *(int *)p + x;\
+\}\
+\
+t_list    *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))\
+\{\
+    t_list    *dupe;\
+    t_list    *aux;\
+\
+    if (!lst || !(*f) || !(*del))\
+        return (NULL);\
+    dupe = ft_lstnew((*f)(lst->content));\
+    lst = lst->next;\
+    while (lst != NULL)\
+    \{\
+        aux = ft_lstnew(f(lst->content));\
+        if (!aux)\
+        \{\
+            ft_lstclear(&dupe, del);\
+            return (NULL);\
+        \}\
+        ft_lstadd_back(&dupe, aux);\
+        ft_lstdelone(aux, del);\
+        lst = lst->next;\
+    \}\
+    return (dupe);\
+\}\
+int main (void)\
+\{\
+    t_list  *lst;\
+    void    (*f)(void *);\
+    void    (*del)(void *);\
+    void    *x;\
+    int     y;\
+    \
+    y = 1;\
+    x = &y;\
+    f = &function;\
+    del = &ft_del;\
+    lst = ft_lstnew(x);\
+    ft_lstmap(lst, f, del);\
+    return (0);\
+\}}

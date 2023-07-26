@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 14:55:24 by becamino          #+#    #+#             */
-/*   Updated: 2023/07/26 13:05:21 by becamino         ###   ########.fr       */
+/*   Updated: 2023/07/26 15:12:07 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
     *(int *)p = *(int *)p + x;
 }
 
-void    del(void *p)
+void    ft_del(void *p)
 {
     p = (void *)0;
 }*/
@@ -47,7 +47,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 			return (NULL);
 		}
 		ft_lstadd_back(&dupe, aux);
-		ft_lstdelone(aux, del);
 		lst = lst->next;
 	}
 	return (dupe);
@@ -55,16 +54,23 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 /*int main (void)
 {
     t_list  *lst;
+	t_list	*sec;
     void    (*f)(void *);
     void    (*del)(void *);
 	void	*x;
+	void 	*w;
 	int		y;
+	int		z;
 	
     y = 1;
+	z = 3;
 	x = &y;
-    f = &f;
-    del = &del;
+	w = &z;
+    f = &function;
+    del = &ft_del;
 	lst = ft_lstnew(x);
+	sec = ft_lstnew(w);
+	ft_lstadd_back(&lst, sec);
     ft_lstmap(lst, f, del);
     return (0);
 }*/
