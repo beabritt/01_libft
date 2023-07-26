@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:40:32 by becamino          #+#    #+#             */
-/*   Updated: 2023/07/25 13:08:11 by becamino         ###   ########.fr       */
+/*   Updated: 2023/07/26 12:46:28 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {	
-	if (!lst || !f)
+	if (!lst || !(*f))
 		return ;
 	while (lst != NULL)
 	{
-		f(lst->content);
+		(*f)(lst->content);
 		lst = lst->next;
 	}
 }

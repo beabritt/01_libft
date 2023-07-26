@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:25:21 by becamino          #+#    #+#             */
-/*   Updated: 2023/07/25 12:25:23 by becamino         ###   ########.fr       */
+/*   Updated: 2023/07/26 12:07:22 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (!lst || !del)
 		return ;
-	del(lst->content);
+	(del)(lst->content);
 	free(lst);
 }
 
